@@ -86,7 +86,7 @@ python train_model.py level=1 batch_size=5 num_train_iters=100000
 #### 6. Test the provided pre-trained models on full-resolution test EBB! images
 
 ```bash
-python test_model.py level=0 orig=true
+python test_model.py orig=true
 ```
 
 Optional parameters:
