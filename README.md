@@ -99,13 +99,8 @@ Optional parameters:
 #### 7. Validate the obtained model on full-resolution test EBB! images
 
 ```bash
-python test_model.py level=<level>
+python test_model.py
 ```
-
-Obligatory parameters:
-
->```level```: **```3, 2, 1```**
-
 Optional parameters:
 
 >```restore_iter```: **```None```** &nbsp; - &nbsp; iteration to restore (when not specified, the last saved model for level=```<level>``` is loaded)<br/>
