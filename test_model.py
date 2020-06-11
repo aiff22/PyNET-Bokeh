@@ -11,6 +11,7 @@ tf.compat.v1.disable_v2_behavior()
 from load_dataset import load_input_image
 from model import PyNET
 import utils
+import sys
 
 LEVEL, restore_iter, dataset_dir, use_gpu, orig_model = utils.process_test_model_args(sys.argv)
 DSLR_SCALE = float(1) / (2 ** (LEVEL - 2))
@@ -30,14 +31,12 @@ with tf.compat.v1.Session(config=config) as sess:
     output_l1, output_l2, output_l3, output_l4, output_l5, output_l6, output_l7 = \
         PyNET(x_, instance_norm=True, instance_norm_level_1=False)
 
-    if LEVEL == 7:
-        bokeh_img = output_l7
-    if LEVEL == 6:
-        bokeh_img = output_l6
-    if LEVEL == 5:
-        bokeh_img = output_l5
-    if LEVEL == 4:
-        bokeh_img = output_l4
+    if LEVEL < 1:
+        print("Lvel number cannot be less than 1. Aborting.")
+        sys.exit()
+    if LEVEL > 3:
+        print("Larger images are needed for computing PSNR / SSIM scores. Aborting.")
+        sys.exit()
     if LEVEL == 3:
         bokeh_img = output_l3
     if LEVEL == 2:
@@ -47,10 +46,19 @@ with tf.compat.v1.Session(config=config) as sess:
 
     bokeh_img = tf.clip_by_value(bokeh_img, 0.0, 1.0)
 
+    # Removing the boundary (32 px) from the resulting / target images
+
+    crop_height_ = tf.compat.v1.placeholder(tf.int32)
+    crop_width_ = tf.compat.v1.placeholder(tf.int32)
+
+    bokeh_img_cropped = tf.image.crop_to_bounding_box(bokeh_img, 32, 32, crop_height_, crop_width_)
+    y_cropped = tf.image.crop_to_bounding_box(y_, 32, 32, crop_height_, crop_width_)
+
     # Losses
-    loss_psnr = tf.reduce_mean(tf.image.psnr(bokeh_img, y_, 1.0))
-    loss_ssim = tf.reduce_mean(tf.image.ssim(bokeh_img, y_, 1.0))
-    loss_ms_ssim = tf.reduce_mean(tf.image.ssim_multiscale(bokeh_img, y_, 1.0))
+
+    loss_psnr = tf.reduce_mean(tf.image.psnr(bokeh_img_cropped, y_cropped, 1.0))
+    loss_ssim = tf.reduce_mean(tf.image.ssim(bokeh_img_cropped, y_cropped, 1.0))
+    loss_ms_ssim = tf.reduce_mean(tf.image.ssim_multiscale(bokeh_img_cropped, y_cropped, 1.0))
 
     # Loading pre-trained model
 
@@ -116,7 +124,7 @@ with tf.compat.v1.Session(config=config) as sess:
         Y = np.reshape(Y, [1, Y.shape[0], Y.shape[1], 3])
 
         loss_psnr_temp, loss_ssim_temp, loss_msssim_temp = sess.run([loss_psnr, loss_ssim, loss_ms_ssim],
-                                                                    feed_dict={x_: I, y_: Y})
+                            feed_dict={x_: I, y_: Y, crop_height_: Y.shape[1] - 64, crop_width_: Y.shape[2] - 64})
 
         print(photo, iter_, loss_psnr_temp, loss_ssim_temp, loss_msssim_temp)
 
