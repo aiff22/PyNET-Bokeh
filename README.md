@@ -36,7 +36,7 @@ This repository provides the implementation of the deep learning-based bokeh eff
 
 <br/>
 
-<img src="http://people.ee.ethz.ch/~ihnatova/assets/img/pynet-bokeh/architecture_pynet_bokeh_git.png" alt="drawing" width="1000"/>
+<img src="https://people.ee.ethz.ch/~ihnatova/assets/img/pynet-bokeh/architecture_pynet_git.png" alt="drawing" width="1000"/>
 
 <br/>
 
