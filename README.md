@@ -22,8 +22,8 @@ This repository provides the implementation of the deep learning-based bokeh eff
 
 #### 3. First steps
 
-- Download the pre-trained [VGG-19 model](https://polybox.ethz.ch/index.php/s/7z5bHNg5r5a0g7k) <sup>[Mirror](https://drive.google.com/file/d/0BwOLOmqkYj-jMGRwaUR2UjhSNDQ/view?usp=sharing&resourcekey=0-Ff-0HUQsoKJxZ84trhsHpA)</sup> and put it into `vgg_pretrained/` folder.
-- Download the pre-trained [PyNET model](https://drive.google.com/file/d/1oMHBTERgAtARD-kaQHSC-lH4ROXYCixM/view?usp=sharing) and put it into `models/original/` folder.
+- Download the pre-trained [VGG-19 model](https://polybox.ethz.ch/index.php/s/7z5bHNg5r5a0g7k) and put it into `vgg_pretrained/` folder.
+- Download the pre-trained [PyNET model](https://data.vision.ee.ethz.ch/ihnatova/public/ebb/PyNET_Bokeh_pretrained.zip) and put it into `models/original/` folder.
 - Download the [EBB! dataset](http://people.ee.ethz.ch/~ihnatova/pynet-bokeh.html#dataset) and extract it into `ebb_dataset/` folder.    
   <sub>This folder should contain two subfolders: `train/` and `test/`</sub>
   
