@@ -2,13 +2,13 @@
 
 <br/>
 
-<img src="http://people.ee.ethz.ch/~ihnatova/assets/img/pynet-bokeh/teaser.jpg"/>
+<img src="https://aiff22.github.io/assets/img/pynet-bokeh/teaser.jpg"/>
 
 <br/>
 
-#### 1. Overview&nbsp; [[Paper]](https://arxiv.org/pdf/2006.05698.pdf) [[Project Webpage]](http://people.ee.ethz.ch/~ihnatova/pynet-bokeh.html) [[PyNET PyTorch]](https://github.com/aiff22/PyNET-PyTorch) 
+#### 1. Overview&nbsp; [[Paper]](https://arxiv.org/pdf/2006.05698.pdf) [[Project Webpage]](https://aiff22.github.io/pynet-bokeh.html) [[PyNET PyTorch]](https://github.com/aiff22/PyNET-PyTorch) 
 
-This repository provides the implementation of the deep learning-based bokeh effect rendering approach presented in [this paper](https://arxiv.org/pdf/2006.05698.pdf). The  model  is  trained  to map the standard **narrow-aperture images** into shallow depth-of-field photos captured with a professional Canon 7D DSLR camera. The presented approach is camera independent, **does not require any special hardware**, and can also be applied to the existing images. More visual results of this method on the presented EBB! dataset and its comparison to the **Portrait Mode** of the *Google Pixel Camera* app can be found [here](http://people.ee.ethz.ch/~ihnatova/pynet-bokeh.html#demo).
+This repository provides the implementation of the deep learning-based bokeh effect rendering approach presented in [this paper](https://arxiv.org/pdf/2006.05698.pdf). The  model  is  trained  to map the standard **narrow-aperture images** into shallow depth-of-field photos captured with a professional Canon 7D DSLR camera. The presented approach is camera independent, **does not require any special hardware**, and can also be applied to the existing images. More visual results of this method on the presented EBB! dataset and its comparison to the **Portrait Mode** of the *Google Pixel Camera* app can be found [here](https://aiff22.github.io/pynet-bokeh.html#demo).
 
 <br/>
 
@@ -22,12 +22,10 @@ This repository provides the implementation of the deep learning-based bokeh eff
 
 #### 3. First steps
 
-- Download the pre-trained [VGG-19 model](https://polybox.ethz.ch/index.php/s/7z5bHNg5r5a0g7k) and put it into `vgg_pretrained/` folder.
-- Download the pre-trained [PyNET model](https://data.vision.ee.ethz.ch/ihnatova/public/ebb/PyNET_Bokeh_pretrained.zip) and put it into `models/original/` folder.
-- Download the [EBB! dataset](http://people.ee.ethz.ch/~ihnatova/pynet-bokeh.html#dataset) and extract it into `ebb_dataset/` folder.    
+- Download the pre-trained [VGG-19 model](https://download.ai-benchmark.com/s/CCDiWM2sE25x2dW/download/imagenet-vgg-verydeep-19.mat) and put it into `vgg_pretrained/` folder.
+- Download the pre-trained [PyNET model](https://download.ai-benchmark.com/s/RQXWD3eg5gSXLMa/download/PyNET_Bokeh_pretrained.zip) and put it into `models/original/` folder.
+- Download the [EBB! dataset](https://aiff22.github.io/pynet-bokeh.html#dataset) and extract it into `ebb_dataset/` folder.    
   <sub>This folder should contain two subfolders: `train/` and `test/`</sub>
-  
-  <sub>*Please note that Google Drive has a quota limiting the number of downloads per day. To avoid it, you can login to your Google account and press "Add to My Drive" button instead of a direct download. Please check [this issue](https://github.com/aiff22/PyNET/issues/4) for more information.* </sub>
 
 <br/>
 
